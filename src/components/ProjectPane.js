@@ -15,7 +15,7 @@ export default () => (
                     image={'bradjobe.png'}
                     title={'My personal website'}
                     description={"You're using it right now!"}
-                    githubLink={'https://github.com/ScradFTW/'}
+                    githubLink={'https://github.com/ScradFTW/bradjobe.dev'}
                 />
             </Grid.Column>
             <Grid.Column width={10}>
