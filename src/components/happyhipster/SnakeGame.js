@@ -91,7 +91,7 @@ export default class extends React.Component {
         }
 
         // snake eats the apple
-        if (this.ax == this.px && this.ay == this.py) {
+        if (this.ax === this.px && this.ay === this.py) {
 
             this.setState({tail: this.state.tail + 1});
 
