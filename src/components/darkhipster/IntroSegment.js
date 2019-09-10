@@ -51,6 +51,7 @@ export default class extends React.Component {
                     className={'raleway'}
                     onClick={() => window.location.reload()}
                     style={{
+                        background: 'black',
                         position: 'absolute',
                         cursor: 'pointer',
                         fontSize: 130,
@@ -66,7 +67,11 @@ export default class extends React.Component {
                 >
                     bradjo.be
                 </p>
-                <Fade spy={this.state.background} duration={4000} reverse={true}>
+                <Fade
+                    spy={this.state.background}
+                    duration={4000}
+                    reverse={true}
+                >
                     <Segment
                         inverted
                         vertical
