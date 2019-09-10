@@ -46,12 +46,15 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div>
+            <div
+                style={{
+                    backgroundColor: 'black'
+                }}
+            >
                 <p
                     className={'raleway'}
                     onClick={() => window.location.reload()}
                     style={{
-                        background: 'black',
                         position: 'absolute',
                         cursor: 'pointer',
                         fontSize: 130,
