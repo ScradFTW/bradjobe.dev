@@ -2,50 +2,41 @@ import React from 'react';
 import {Segment} from 'semantic-ui-react';
 import Fade from 'react-reveal/Fade';
 
-const hexToRgb = (hex) => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-        ? {
-            red: parseInt(result[1], 16),
-            green: parseInt(result[2], 16),
-            blue: parseInt(result[3], 16)
-        }
-        : null;
-};
-
-const createBackground = () => {
-    const numOfGrads = (Math.floor(Math.random() * 50) + 10) * 2;
-    const grads = [];
-    const colors = ['#000000', '#0f0f0f'];
-
-    for (let i = 0; i < numOfGrads; i++) {
-        const deg = Math.floor(Math.random() * 90);
-        const numOfLines = (Math.floor(Math.random() * 100) + 25) * 2;
-
-        const lines = [];
-        for (let l = 0; l < numOfLines - 1; l++) {
-            const {red, green, blue} = hexToRgb(colors[Math.floor(Math.random() * colors.length)]);
-            const alpha = Math.random() + 0.2;
-
-            lines.push(`rgba(${red}, ${green}, ${blue}, ${alpha}) ${l / numOfLines * 100}%`);
-            lines.push(`rgba(${red}, ${green}, ${blue}, ${alpha}) ${l + 1 / numOfLines * 100}%`);
-        }
-
-        grads.push(`linear-gradient(${deg}deg, ${lines.join(',')})`);
-    }
-
-    return grads.join(',');
-};
+import HexToRgb from '../../lib/HexToRgb';
 
 export default class extends React.Component {
     state = {
         background: '#000000'
     };
 
+    _createBackground() {
+        const numOfGrads = (Math.floor(Math.random() * 50) + 10) * 2;
+        const grads = [];
+        const colors = ['#000000', '#0f0f0f'];
+
+        for (let i = 0; i < numOfGrads; i++) {
+            const deg = Math.floor(Math.random() * 90);
+            const numOfLines = (Math.floor(Math.random() * 100) + 25) * 2;
+
+            const lines = [];
+            for (let l = 0; l < numOfLines - 1; l++) {
+                const {red, green, blue} = HexToRgb(colors[Math.floor(Math.random() * colors.length)]);
+                const alpha = Math.random() + 0.2;
+
+                lines.push(`rgba(${red}, ${green}, ${blue}, ${alpha}) ${l / numOfLines * 100}%`);
+                lines.push(`rgba(${red}, ${green}, ${blue}, ${alpha}) ${l + 1 / numOfLines * 100}%`);
+            }
+
+            grads.push(`linear-gradient(${deg}deg, ${lines.join(',')})`);
+        }
+
+        return grads.join(',');
+    };
+
     componentDidMount() {
-        this.setState({background: createBackground()});
+        this.setState({background: this._createBackground()});
         this.interval = setInterval(() => {
-            this.setState({background: createBackground()});
+            this.setState({background: this._createBackground()});
         }, 15000);
     }
 
