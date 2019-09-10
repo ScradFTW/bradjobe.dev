@@ -1,11 +1,11 @@
 import React, {createRef} from 'react';
 import {Container, Tab, Sticky} from 'semantic-ui-react';
+import {Fade} from "react-reveal";
 
 import UiSelector from './components/UiSelector';
 import IntroSegment from './components/IntroSegment';
 import MePane from './components/MePane';
 import ProjectsPane from './components/ProjectPane';
-import ArtPane from './components/ArtPane';
 
 import UiStyleContextProvider from './contexts/UiStyleContextProvider';
 
@@ -15,7 +15,6 @@ import Uis from './lib/UIs';
 import 'semantic-ui-css/components/icon.css';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
-import {Fade} from "react-reveal";
 
 export default class extends React.Component {
     constructor(props) {
@@ -38,6 +37,10 @@ export default class extends React.Component {
 
             case Uis.HAPPY_HIPSTER:
                 colour = 'green';
+                break;
+
+            case Uis.PROFESSIONAL:
+                colour = 'blue';
                 break;
 
             default:
@@ -120,27 +123,7 @@ export default class extends React.Component {
                                             </Tab.Pane>
                                         </Fade>
                                     )
-                                },
-                                /* TODO: Art Pane */
-                                 // {
-                                 //     menuItem: {
-                                 //         content: 'Art',
-                                 //         color: this.state.tabColour
-                                 //     },
-                                 //     render: () => (
-                                 //         <Fade>
-                                 //             <Tab.Pane
-                                 //                 style={{
-                                 //                     height: '92vh',
-                                 //                     border: 'none'
-                                 //                 }}
-                                 //
-                                 //             >
-                                 //                 <ArtPane/>
-                                 //             </Tab.Pane>
-                                 //         </Fade>
-                                 //     )
-                                 // },
+                                }
                              ]}
                         />
                     </Sticky>
