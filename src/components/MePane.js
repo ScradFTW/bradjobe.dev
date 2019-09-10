@@ -100,7 +100,7 @@ export default () => (
         <Grid.Row>
             <Button
                 primary
-                onClick={() => window.location.href = '/media/resume.pdf'}
+                onClick={() => window.location.href = '/resume.pdf'}
             >
                 Download Resume
             </Button>
