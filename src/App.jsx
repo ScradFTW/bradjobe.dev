@@ -17,7 +17,7 @@ export default () => {
 
     return (
         <Ref innerRef={contextRef}>
-            <Container style={{minWidth: '100%'}}>
+            <Container fluid>
                 <IntroSegment/>
                 <Sticky context={contextRef}>
                     <Tab
@@ -34,8 +34,8 @@ export default () => {
                                 height: '6vh',
                                 display: 'flex',
                                 alignItems: 'center',
-                                paddingLeft: '10%',
-                                paddingRight: '10%',
+                                paddingLeft: 'clamp(12px, 10%, 120px)',
+                                paddingRight: 'clamp(12px, 10%, 120px)',
                                 fontWeight: 600,
                                 margin: 0
                             }
