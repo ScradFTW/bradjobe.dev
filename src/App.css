@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 html,
 html * {
@@ -10,10 +9,6 @@ html * {
 body {
     font-family: 'Inter', sans-serif !important;
     background-color: #ffffff;
-}
-
-.monospace {
-    font-family: 'JetBrains Mono', monospace !important;
 }
 
 .raleway {
@@ -31,26 +26,4 @@ body {
 
 .techCard:hover {
     transform: translateY(-2px);
-}
-
-.blinking {
-    animation: blinker 1000ms step-end infinite;
-}
-
-.hackerMenu.ui.menu .item {
-    color: #00FF41 !important;
-}
-
-.hackerMenu.ui.menu .item:hover {
-    color: #FFFFFF !important;
-}
-
-.hackerMenu.ui.menu .active.item {
-    text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 0;
-    }
 }
