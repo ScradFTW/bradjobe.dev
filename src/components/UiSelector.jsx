@@ -2,19 +2,17 @@ import React, {useContext} from 'react';
 
 import {UiStyleContext} from '../contexts/UiStyleContextProvider';
 import UIs from '../lib/UIs';
+import useTheme from '../lib/useTheme';
 
-export default (props) => {
+export default () => {
     const uiContext = useContext(UiStyleContext);
-    const isHacker = uiContext.ui === UIs.HACKER.name;
+    const {isHacker} = useTheme();
     const nextUi = isHacker ? UIs.PROFESSIONAL : UIs.HACKER;
 
     return (
         <button
             className={isHacker ? 'monospace' : 'raleway'}
-            onClick={() => {
-                uiContext.setUi(nextUi.name);
-                props.onUiSelect(nextUi.name);
-            }}
+            onClick={() => uiContext.setUi(nextUi.name)}
             style={{
                 cursor: 'pointer',
                 fontSize: 13,

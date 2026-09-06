@@ -1,13 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
-import {UiStyleContext} from '../contexts/UiStyleContextProvider';
-import UIs from '../lib/UIs';
+import useTheme from '../lib/useTheme';
 
 import HackerIntroSegment from './hacker/IntroSegment';
 import ProfessionalIntroSegment from './professional/IntroSegment';
 
 export default () => {
-    const {ui} = useContext(UiStyleContext);
+    const {isHacker} = useTheme();
 
-    return ui === UIs.HACKER.name ? <HackerIntroSegment/> : <ProfessionalIntroSegment/>;
+    return isHacker ? <HackerIntroSegment/> : <ProfessionalIntroSegment/>;
 };

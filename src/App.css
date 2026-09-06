@@ -37,6 +37,18 @@ body {
     animation: blinker 1000ms step-end infinite;
 }
 
+.hackerMenu.ui.menu .item {
+    color: #00FF41 !important;
+}
+
+.hackerMenu.ui.menu .item:hover {
+    color: #FFFFFF !important;
+}
+
+.hackerMenu.ui.menu .active.item {
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
 @keyframes blinker {
     50% {
         opacity: 0;
