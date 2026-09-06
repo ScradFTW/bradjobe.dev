@@ -2,17 +2,12 @@ import React from 'react';
 import {Grid} from 'semantic-ui-react';
 
 import ProjectCard from './ProjectCard';
-import useTheme from '../lib/useTheme';
 
-const Description = ({children}) => {
-    const {colours} = useTheme();
-
-    return (
-        <p style={{padding: '2%', fontSize: 15, color: colours.text, opacity: 0.85, lineHeight: 1.7}}>
-            {children}
-        </p>
-    );
-};
+const Description = ({children}) => (
+    <p style={{padding: '2%', fontSize: 15, color: '#334155', lineHeight: 1.7}}>
+        {children}
+    </p>
+);
 
 export default () => (
     <Grid
