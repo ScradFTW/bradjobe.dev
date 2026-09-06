@@ -1,7 +1,8 @@
 import React from 'react';
-import {Grid} from 'semantic-ui-react';
+import {Grid, Ref} from 'semantic-ui-react';
 
 import ProjectCard from './ProjectCard';
+import useReveal from '../lib/useReveal';
 
 const Description = ({children}) => (
     <p style={{padding: '2%', fontSize: 15, color: '#334155', lineHeight: 1.7}}>
@@ -9,8 +10,21 @@ const Description = ({children}) => (
     </p>
 );
 
+const ProjectRow = ({children}) => {
+    const {ref, style} = useReveal();
+
+    return (
+        <Ref innerRef={ref}>
+            <Grid.Row style={style}>
+                {children}
+            </Grid.Row>
+        </Ref>
+    );
+};
+
 export default () => (
     <Grid
+        stackable
         style={{
             paddingTop: 40,
             paddingBottom: 100,
@@ -18,7 +32,7 @@ export default () => (
             paddingRight: '4%'
         }}
     >
-        <Grid.Row>
+        <ProjectRow>
             <Grid.Column width={6}>
                 <ProjectCard
                     image={'bradjobe.png'}
@@ -37,8 +51,8 @@ export default () => (
                     It&apos;s mostly used for testing and experiments, but sometimes look professional.
                 </Description>
             </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
+        </ProjectRow>
+        <ProjectRow>
             <Grid.Column width={6}>
                 <ProjectCard
                     image={'saf.png'}
@@ -67,8 +81,8 @@ export default () => (
                     Clone the repo and run the makefile in your Linux terminal to run the project.
                 </Description>
             </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
+        </ProjectRow>
+        <ProjectRow>
             <Grid.Column width={6}>
                 <ProjectCard
                     image={'allatlantic.png'}
@@ -84,6 +98,6 @@ export default () => (
                     search for articles containing complex or specific information.
                 </Description>
             </Grid.Column>
-        </Grid.Row>
+        </ProjectRow>
     </Grid>
 );

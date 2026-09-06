@@ -1,23 +1,31 @@
 import React from 'react';
-import {Grid, Icon} from 'semantic-ui-react';
+import {Grid, Icon, Ref} from 'semantic-ui-react';
 
-const SectionHeader = ({children}) => (
-    <Grid.Row style={{paddingBottom: 8, paddingTop: 32}}>
-        <h2
-            className={'raleway'}
-            style={{
-                fontSize: 22,
-                fontWeight: 600,
-                color: '#0F172A',
-                borderLeft: 'solid 4px #6366F1',
-                paddingLeft: 12,
-                margin: 0
-            }}
-        >
-            {children}
-        </h2>
-    </Grid.Row>
-);
+import useReveal from '../lib/useReveal';
+
+const SectionHeader = ({children}) => {
+    const {ref, style} = useReveal();
+
+    return (
+        <Ref innerRef={ref}>
+            <Grid.Row style={{...style, paddingBottom: 8, paddingTop: 32}}>
+                <h2
+                    className={'raleway'}
+                    style={{
+                        fontSize: 22,
+                        fontWeight: 600,
+                        color: '#0F172A',
+                        borderLeft: 'solid 4px #6366F1',
+                        paddingLeft: 12,
+                        margin: 0
+                    }}
+                >
+                    {children}
+                </h2>
+            </Grid.Row>
+        </Ref>
+    );
+};
 
 const Tech = (props) => (
     <span
@@ -41,34 +49,41 @@ const Tech = (props) => (
     </span>
 );
 
-const Job = (props) => (
-    <Grid.Row
-        style={{
-            marginLeft: 4,
-            marginBottom: 8,
-            paddingBottom: 20,
-            borderBottom: 'solid 1px #F1F5F9'
-        }}
-    >
-        <Grid.Column width={16}>
-            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'baseline'}}>
-                <div>
-                    <span style={{fontWeight: 700, fontSize: 17, color: '#0F172A'}}>{props.title}</span>
-                    <span style={{fontSize: 15, color: '#475569', marginLeft: 10}}>{props.position}</span>
-                </div>
-                <span style={{fontSize: 13, color: '#94A3B8', fontStyle: 'italic'}}>
-                    {props.startDate} &ndash; {props.endDate}
-                </span>
-            </div>
-            <ul style={{marginTop: 10, marginBottom: 0, paddingLeft: 20, color: '#334155', fontSize: 15, lineHeight: 1.7}}>
-                {props.items.map((item, index) => <li key={index}>{item}</li>)}
-            </ul>
-        </Grid.Column>
-    </Grid.Row>
-);
+const Job = (props) => {
+    const {ref, style} = useReveal();
+
+    return (
+        <Ref innerRef={ref}>
+            <Grid.Row
+                style={{
+                    ...style,
+                    marginLeft: 4,
+                    marginBottom: 8,
+                    paddingBottom: 20,
+                    borderBottom: 'solid 1px #F1F5F9'
+                }}
+            >
+                <Grid.Column width={16}>
+                    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'baseline'}}>
+                        <div>
+                            <span style={{fontWeight: 700, fontSize: 17, color: '#0F172A'}}>{props.title}</span>
+                            <span style={{fontSize: 15, color: '#475569', marginLeft: 10}}>{props.position}</span>
+                        </div>
+                        <span style={{fontSize: 13, color: '#94A3B8', fontStyle: 'italic'}}>
+                            {props.startDate} &ndash; {props.endDate}
+                        </span>
+                    </div>
+                    <ul style={{marginTop: 10, marginBottom: 0, paddingLeft: 20, color: '#334155', fontSize: 15, lineHeight: 1.7}}>
+                        {props.items.map((item, index) => <li key={index}>{item}</li>)}
+                    </ul>
+                </Grid.Column>
+            </Grid.Row>
+        </Ref>
+    );
+};
 
 export default () => (
-    <Grid style={{paddingLeft: '4%', paddingRight: '4%', paddingBottom: 60}}>
+    <Grid stackable style={{paddingLeft: '4%', paddingRight: '4%', paddingBottom: 60}}>
         <Grid.Row style={{paddingTop: 40}}>
             <div>
                 <h1 className={'raleway'} style={{fontSize: 34, fontWeight: 700, color: '#0F172A', margin: 0}}>

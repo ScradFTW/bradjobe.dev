@@ -1,10 +1,17 @@
 import React from 'react';
+import {Icon} from 'semantic-ui-react';
 import FadeIn from './common/FadeIn';
 import scroll from '../lib/Scroll';
 
 const skills = [
     'React', 'Redux', 'React Native', 'Linux', 'PHP',
     'Python', 'MySQL', 'Java', 'Git', 'Website Performance'
+];
+
+const contactLinks = [
+    {icon: 'mail', label: 'Email', href: 'mailto:you@example.com'},
+    {icon: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/your-name'},
+    {icon: 'github', label: 'GitHub', href: 'https://github.com/your-username'}
 ];
 
 const Chip = ({children}) => (
@@ -23,6 +30,36 @@ const Chip = ({children}) => (
     >
         {children}
     </span>
+);
+
+const ContactLink = ({icon, label, href}) => (
+    <a
+        href={href}
+        aria-label={label}
+        title={label}
+        style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 42,
+            height: 42,
+            borderRadius: '50%',
+            border: 'solid 1px rgba(255, 255, 255, 0.15)',
+            backgroundColor: 'rgba(255, 255, 255, 0.06)',
+            color: '#CBD5E1',
+            transition: 'transform 150ms ease, color 150ms ease'
+        }}
+        onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.08)';
+            e.currentTarget.style.color = '#FFFFFF';
+        }}
+        onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.color = '#CBD5E1';
+        }}
+    >
+        <Icon name={icon} size={'large'} style={{margin: 0}}/>
+    </a>
 );
 
 export default () => (
@@ -48,7 +85,7 @@ export default () => (
                     <h1
                         className={'raleway'}
                         style={{
-                            fontSize: 64,
+                            fontSize: 'clamp(32px, 8vw, 64px)',
                             fontWeight: 700,
                             color: '#FFFFFF',
                             margin: 0,
@@ -71,15 +108,18 @@ export default () => (
                     </h1>
                     <p
                         style={{
-                            fontSize: 24,
+                            fontSize: 'clamp(18px, 3vw, 24px)',
                             fontWeight: 600,
                             color: '#818CF8',
                             marginTop: 16,
-                            marginBottom: 32
+                            marginBottom: 24
                         }}
                     >
                         Full Stack Web Developer
                     </p>
+                    <div style={{display: 'flex', gap: 12, marginBottom: 32}}>
+                        {contactLinks.map((link) => <ContactLink key={link.label} {...link}/>)}
+                    </div>
                     <p
                         style={{
                             fontSize: 15,
@@ -116,8 +156,8 @@ export default () => (
                         src={'personal.png'}
                         style={{
                             display: 'block',
-                            width: 320,
-                            height: 320,
+                            width: 'clamp(160px, 30vw, 320px)',
+                            height: 'clamp(160px, 30vw, 320px)',
                             borderRadius: '50%',
                             objectFit: 'cover',
                             boxShadow: '0 0 0 6px rgba(99, 102, 241, 0.15), 0 20px 60px -15px rgba(0, 0, 0, 0.6)'
