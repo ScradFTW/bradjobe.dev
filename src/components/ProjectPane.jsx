@@ -1,12 +1,15 @@
 import React from 'react';
 import {Grid} from 'semantic-ui-react';
 
-import ProjectCard from "./ProjectCard";
+import ProjectCard from './ProjectCard';
 
 export default () => (
     <Grid
         style={{
-            paddingBottom: 100
+            paddingTop: 40,
+            paddingBottom: 100,
+            paddingLeft: '4%',
+            paddingRight: '4%'
         }}
     >
         <Grid.Row>
@@ -14,14 +17,17 @@ export default () => (
                 <ProjectCard
                     image={'bradjobe.png'}
                     title={'My personal website'}
-                    description={"You're using it right now!"}
+                    description={'You\'re using it right now!'}
                     githubLink={'https://github.com/ScradFTW/bradjobe.dev'}
                 />
             </Grid.Column>
             <Grid.Column width={10}>
                 <p
                     style={{
-                        padding: '2%'
+                        padding: '2%',
+                        fontSize: 15,
+                        color: '#334155',
+                        lineHeight: 1.7
                     }}
                 >
                     This is my personal site that I used for advertising contract work.
@@ -29,7 +35,7 @@ export default () => (
                     <br/>
                     The site is written in React, and uses the Semantic UI for creating most of the UI components.
                     <br/>
-                    It's mostly used for testing and experiments, but sometimes look professional.
+                    It&apos;s mostly used for testing and experiments, but sometimes look professional.
                 </p>
             </Grid.Column>
         </Grid.Row>
@@ -45,14 +51,17 @@ export default () => (
             <Grid.Column width={10}>
                 <p
                     style={{
-                        padding: '2%'
+                        padding: '2%',
+                        fontSize: 15,
+                        color: '#334155',
+                        lineHeight: 1.7
                     }}
                 >
                     Written for my AI class while I was in University, Swimulated Artificical Fintelligence is not
                     only a great pun, but also a fun C project that runs in terminal
                     <br/>
                     <br/>
-                    SAF is a fish that swims in your terminal, which you can feed by pressing the 'F' key.
+                    SAF is a fish that swims in your terminal, which you can feed by pressing the &apos;F&apos; key.
                     <br/>
                     The fish will continuously swim around randomly until food drops, then it will find the optimal
                     path for the food and eat it.
@@ -79,7 +88,10 @@ export default () => (
             <Grid.Column width={10}>
                 <p
                     style={{
-                        padding: '2%'
+                        padding: '2%',
+                        fontSize: 15,
+                        color: '#334155',
+                        lineHeight: 1.7
                     }}
                 >
                     Created with React-Native, the allAtlanticCanada app allows customers of allNovaScotia and its sister
