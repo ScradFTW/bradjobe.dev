@@ -56,7 +56,6 @@ export default class extends React.Component {
                         <Sticky context={this.contextRef}>
                             <Tab
                                 className={'tabBar'}
-                                onClick={() => scroll('tabBar')}
                                 onTabChange={() => scroll('tabBar')}
                                 menu={{
                                     secondary: true,
