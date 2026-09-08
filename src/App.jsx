@@ -18,7 +18,7 @@ const navItems = [
 export default () => (
     <div className="min-h-screen bg-background text-foreground">
         <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/80 backdrop-blur-lg">
-            <div className="mx-auto flex h-14 max-w-4xl items-center gap-6 px-6">
+            <div className="mx-auto flex h-14 max-w-4xl items-center gap-6 overflow-x-auto px-6">
                 <Link
                     href="/"
                     aria-label="Home"
@@ -27,7 +27,7 @@ export default () => (
                     brad<span className="text-muted">jobe</span>.dev
                 </Link>
                 {navItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="text-sm font-medium">
+                    <Link key={item.href} href={item.href} className="shrink-0 text-sm font-medium">
                         {item.label}
                     </Link>
                 ))}

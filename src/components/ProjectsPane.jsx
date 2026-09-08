@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from '@heroui/react';
-import {Fish, MessageCircle, Workflow, Tag, Image as ImageIcon, Activity, Terminal} from 'lucide-react';
+import {MessageCircle, Workflow, Tag, Image as ImageIcon, Activity, Terminal, PersonStanding} from 'lucide-react';
 
 import ProjectCard from './ProjectCard';
 
@@ -63,6 +63,12 @@ export default () => (
             exampleLink="/ccaas/"
             logo={{icon: Terminal, bg: '#d9525a'}}
         />
+        <ProjectCard
+            title="Motion Tracker"
+            description="Real-time skeletal tracking off your webcam using a ResNet18-shaped CNN I trained from scratch on COCO keypoints -- no pretrained backbone, no library. Runs fully client-side in multi-threaded WebAssembly."
+            exampleLink="/pose-tracker/"
+            logo={{icon: PersonStanding, bg: '#4fd1c5'}}
+        />
 
         <SubHeading>Other Projects</SubHeading>
 
@@ -71,12 +77,6 @@ export default () => (
             description="The site you're reading right now. React and HeroUI, hand-built rather than templated, and where I host the experiments above."
             githubLink="https://github.com/ScradFTW/bradjobe.dev"
             logo={{letter: 'B', bg: '#008474'}}
-        />
-        <ProjectCard
-            title="Swimulated Artifishial Fintelligence"
-            description="A fish that swims around your terminal, written in C for a university AI class. Feed it by pressing 'F' and it pathfinds to the food and eats it."
-            githubLink="https://github.com/ScradFTW/Swimulated-Artifishial-Fintelligence"
-            logo={{icon: Fish, bg: '#2E86AB'}}
         />
         <ProjectCard
             title="allAtlanticCanada React-Native App"
