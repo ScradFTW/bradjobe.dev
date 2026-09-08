@@ -1,86 +1,52 @@
-import React, {useRef} from 'react';
-import {Container, Ref, Tab, Sticky} from 'semantic-ui-react';
-import Fade from './components/common/Fade';
+import React from 'react';
+import {Link} from '@heroui/react';
 
-import IntroSegment from './components/IntroSegment';
-import MePane from './components/MePane';
-import ProjectsPane from './components/ProjectPane';
+import Hero from './components/Hero';
+import ExperiencePane from './components/ExperiencePane';
+import ProjectsPane from './components/ProjectsPane';
 
-import scroll from './lib/Scroll';
-
-import 'semantic-ui-css/components/icon.css';
-import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
-export default () => {
-    const contextRef = useRef(null);
+const navItems = [
+    {href: '#experience', label: 'Experience'},
+    {href: '#education', label: 'Education'},
+    {href: '#technology', label: 'Technology'},
+    {href: '#languages', label: 'Languages'},
+    {href: '#projects', label: 'Projects'}
+];
 
-    return (
-        <Ref innerRef={contextRef}>
-            <Container fluid>
-                <IntroSegment/>
-                <Sticky context={contextRef}>
-                    <Tab
-                        className={'tabBar'}
-                        onTabChange={() => scroll('tabBar')}
-                        menu={{
-                            secondary: true,
-                            pointing: true,
-                            className: 'raleway',
-                            style: {
-                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                backdropFilter: 'blur(8px)',
-                                borderBottom: 'solid 1px #E5E7EB',
-                                height: '6vh',
-                                display: 'flex',
-                                alignItems: 'center',
-                                paddingLeft: 'clamp(12px, 10%, 120px)',
-                                paddingRight: 'clamp(12px, 10%, 120px)',
-                                fontWeight: 600,
-                                margin: 0
-                            }
-                        }}
-                        panes={[
-                            {
-                                menuItem: {
-                                    content: 'Me',
-                                    color: 'blue'
-                                },
-                                render: () => (
-                                    <Fade>
-                                        <Tab.Pane
-                                            style={{
-                                                height: '92vh',
-                                                border: 'none'
-                                            }}
-                                        >
-                                            <MePane/>
-                                        </Tab.Pane>
-                                    </Fade>
-                                )
-                            },
-                            {
-                                menuItem: {
-                                    content: 'Projects',
-                                    color: 'blue'
-                                },
-                                render: () => (
-                                    <Fade>
-                                        <Tab.Pane
-                                            style={{
-                                                height: '92vh',
-                                                border: 'none'
-                                            }}
-                                        >
-                                            <ProjectsPane/>
-                                        </Tab.Pane>
-                                    </Fade>
-                                )
-                            }
-                        ]}
-                    />
-                </Sticky>
-            </Container>
-        </Ref>
-    );
-};
+export default () => (
+    <div className="min-h-screen bg-background text-foreground">
+        <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/80 backdrop-blur-lg">
+            <div className="mx-auto flex h-14 max-w-4xl items-center gap-6 px-6">
+                <Link
+                    href="/"
+                    aria-label="Home"
+                    className="text-lg font-bold tracking-tight text-foreground shrink-0 no-underline"
+                >
+                    brad<span className="text-muted">jobe</span>.dev
+                </Link>
+                {navItems.map((item) => (
+                    <Link key={item.href} href={item.href} className="text-sm font-medium">
+                        {item.label}
+                    </Link>
+                ))}
+            </div>
+        </nav>
+
+        <main className="mx-auto max-w-4xl px-6">
+            <Hero/>
+            <ExperiencePane/>
+            <ProjectsPane/>
+        </main>
+
+        <footer className="mx-auto max-w-4xl px-6 py-10 text-sm text-muted border-t border-separator mt-16">
+            <img src="/brad.jpg" alt="Brad Jobe" className="w-full h-auto rounded-lg mb-4"/>
+            <p>Brad Jobe &middot; Montreal, QC</p>
+            <p className="mt-2 text-xs">
+                Company, product, and technology names and logos are trademarks of their respective owners and are
+                used here only to identify past employers and the tools I work with.
+            </p>
+        </footer>
+    </div>
+);

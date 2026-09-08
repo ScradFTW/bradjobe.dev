@@ -1,0 +1,3 @@
+I was a key developer on [CBC Listen](https://www.cbc.ca/listen), the React web app for CBC Radio, and the REST API that serves CBC Radio content. I led **the migration of both the site and the API off Azure Cloud onto Openshift running on AWS EC2**. I also built our caching infrastructure for raw web content, ensuring our site could serve thousands of users across Canada.
+
+During my time at CBC, I also led the application work on Podcast recommendations, built with CBC's machine learning team, moved legacy test suites to a modern Cypress platform, and create bug-tracking tools to monitor site and user issues. I also helped build the **in-memory global search** into the API, and set up [Amplitude](https://amplitude.com) to track and report on user behaviour.

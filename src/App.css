@@ -1,30 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 
-html,
-html * {
-    font-family: 'Inter', sans-serif !important;
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --accent: oklch(0.55 0.10 180);
+  --accent-foreground: oklch(0.98 0.01 180);
 }
 
 body {
-    font-family: 'Inter', sans-serif !important;
-    background-color: #ffffff;
-    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
 }
 
-.raleway {
-    font-family: 'Space Grotesk', sans-serif !important;
+/* Every HeroUI Card renders with a stable `.card` base class, so this one
+   rule covers job/project/status cards site-wide without touching each
+   usage. prefers-reduced-motion users get the highlight with no motion. */
+.card {
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
 }
 
-.projectCard {
-    transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-.projectCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.25) !important;
-}
-
-.techCard:hover {
+.card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px -8px color-mix(in oklab, var(--accent) 35%, transparent);
     transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+    .card:hover {
+        transform: none;
+    }
 }

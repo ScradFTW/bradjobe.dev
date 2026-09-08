@@ -1,0 +1,88 @@
+import React from 'react';
+import {Link} from '@heroui/react';
+import {Fish, MessageCircle, Workflow, Tag, Image as ImageIcon, Activity, Terminal} from 'lucide-react';
+
+import ProjectCard from './ProjectCard';
+
+const SectionHeading = ({id, children}) => (
+    <h2 id={id} className="scroll-mt-16 text-2xl font-bold border-l-4 border-accent pl-3 mt-14 mb-6">
+        {children}
+    </h2>
+);
+
+const SubHeading = ({children}) => (
+    <h3 className="text-lg font-semibold mt-10 mb-3">{children}</h3>
+);
+
+// Each "AI Infra Lab" logo reuses that demo's own accent color from its live
+// page, so the homepage card visually matches what you land on.
+export default () => (
+    <>
+        <SectionHeading id="projects">Projects</SectionHeading>
+
+        <SubHeading>AI Infra Lab</SubHeading>
+        <p className="text-muted mb-4">
+            A small self-hosted platform running on this same server. Production-serving patterns like rate
+            limiting, observability, and agent guardrails, built hands-on rather than just read about. All demos
+            below are public; see the <Link href="/ai/">AI hub</Link> for a full walkthrough.
+        </p>
+
+        <ProjectCard
+            title="LLM Testing Demo"
+            description="A chat window for a small language model (Qwen2.5-0.5B) running entirely on this server's one CPU core. No GPU, no external API, just llama.cpp doing the work."
+            exampleLink="/llm-testing/"
+            logo={{icon: MessageCircle, bg: '#df911a'}}
+        />
+        <ProjectCard
+            title="Agent Orchestrator Demo"
+            description="Ask it something and it decides on its own whether the question needs a tool, in this case the genre classifier. A separate guardrail double-checks that decision before anything actually runs."
+            exampleLink="/agent-demo/"
+            logo={{icon: Workflow, bg: '#38853e'}}
+        />
+        <ProjectCard
+            title="Genre Classifier"
+            description="Type in a song title and it guesses the genre. Uses a classic TF-IDF + Logistic Regression model instead of a neural net, trained and served with no GPU involved."
+            exampleLink="/genre-classifier/"
+            logo={{icon: Tag, bg: '#97549b'}}
+        />
+        <ProjectCard
+            title="Image Classifier"
+            description="Upload a photo and a small CNN, trained from scratch on CIFAR-10, guesses what's in it. Served with ONNX Runtime; no PyTorch or GPU needed to run it."
+            exampleLink="/image-classifier/"
+            logo={{icon: ImageIcon, bg: '#d35d31'}}
+        />
+        <ProjectCard
+            title="Status Dashboard"
+            description="Live request counts, latency, and error rates for every demo above, pulled straight from each service's own /stats endpoint. Same idea as Grafana, just small enough to hand-build."
+            exampleLink="/status/"
+            logo={{icon: Activity, bg: '#258998'}}
+        />
+        <ProjectCard
+            title="AI Coding Sandbox"
+            description="Runs an AI coding agent in its own sandboxed container per session, with an egress proxy locking down which domains it can reach so it can't touch anything outside its box."
+            exampleLink="/ccaas/"
+            logo={{icon: Terminal, bg: '#d9525a'}}
+        />
+
+        <SubHeading>Other Projects</SubHeading>
+
+        <ProjectCard
+            title="My personal website"
+            description="The site you're reading right now. React and HeroUI, hand-built rather than templated, and where I host the experiments above."
+            githubLink="https://github.com/ScradFTW/bradjobe.dev"
+            logo={{letter: 'B', bg: '#008474'}}
+        />
+        <ProjectCard
+            title="Swimulated Artifishial Fintelligence"
+            description="A fish that swims around your terminal, written in C for a university AI class. Feed it by pressing 'F' and it pathfinds to the food and eats it."
+            githubLink="https://github.com/ScradFTW/Swimulated-Artifishial-Fintelligence"
+            logo={{icon: Fish, bg: '#2E86AB'}}
+        />
+        <ProjectCard
+            title="allAtlanticCanada React-Native App"
+            description="A mobile news reader for allNovaScotia's network of Atlantic Canada business sites, with search built to handle specific, multi-part queries rather than just keyword matching."
+            exampleLink="https://allatlanticcanada.com"
+            logo={{imgSrc: '/logos/allnovascotia.svg'}}
+        />
+    </>
+);
