@@ -1,0 +1,1 @@
+For a year I worked on an agile team at Lockheed Martin Canada building **3D naval simulations** used to train military personnel. Most of the customer project work was done in Java, using the Spring Framework. I **added unit testing to a legacy Java system that had none**, and sat in on requirements analysis sessions directly with customers and naval engineers.

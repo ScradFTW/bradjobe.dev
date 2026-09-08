@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5"
+    "@heroui/react": "3.2.4",
+    "@heroui/styles": "3.2.4",
+    "lucide-react": "^1.42.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "simple-icons": "^16.30.0"
   },
   "scripts": {
     "lint": "eslint .",
@@ -29,11 +32,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
+    "@tailwindcss/vite": "4.3.1",
     "@vitejs/plugin-react": "^6.1.1",
     "esbuild": "^0.28.2",
     "eslint": "^9.39.5",
     "eslint-plugin-react": "^7.37.0",
     "globals": "^16.0.0",
+    "tailwindcss": "4.3.1",
     "vite": "^8.2.2"
   }
 }

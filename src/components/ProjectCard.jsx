@@ -1,67 +1,59 @@
 import React from 'react';
-import {Image} from 'semantic-ui-react';
+import {Card, Link} from '@heroui/react';
+import {ArrowUpRight} from 'lucide-react';
 
-export default (props) => (
-    <div
-        className={'projectCard'}
-        style={{
-            cursor: 'default',
-            borderRadius: 14,
-            border: 'solid 1px #E5E7EB',
-            backgroundColor: '#FFFFFF',
-            overflow: 'hidden',
-            boxShadow: '0 4px 12px -6px rgba(15, 23, 42, 0.12)'
-        }}
-    >
-        <Image
-            src={props.image}
-            wrapped
-            ui={false}
-        />
-        <div style={{padding: 20}}>
-            <h3 className={'raleway'} style={{fontSize: 18, fontWeight: 600, color: '#0F172A', margin: 0}}>
-                {props.title}
-            </h3>
-            <div style={{height: 1, backgroundColor: '#F1F5F9', margin: '12px 0'}}/>
-            <p style={{fontSize: 14, color: '#64748B', margin: 0}}>
-                {props.description}
-            </p>
-            {(props.githubLink || props.exampleLink) &&
-            <div style={{display: 'flex', gap: 10, marginTop: 16}}>
-                {props.githubLink &&
-                <a
-                    href={props.githubLink}
-                    style={{
-                        textDecoration: 'none',
-                        fontSize: 13,
-                        fontWeight: 600,
-                        padding: '8px 14px',
-                        borderRadius: 8,
-                        color: '#FFFFFF',
-                        backgroundColor: '#16A34A'
-                    }}
-                >
-                    github
-                </a>
-                }
-                {props.exampleLink &&
-                <a
-                    href={props.exampleLink}
-                    style={{
-                        textDecoration: 'none',
-                        fontSize: 13,
-                        fontWeight: 600,
-                        padding: '8px 14px',
-                        borderRadius: 8,
-                        color: '#0F172A',
-                        border: 'solid 1px #E5E7EB'
-                    }}
-                >
-                    example
-                </a>
-                }
+const ProjectLogo = ({icon: IconComp, bg, imgSrc, letter}) => {
+    if (imgSrc) {
+        return (
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white shrink-0 overflow-hidden p-1">
+                <img src={imgSrc} alt="" className="w-full h-full object-contain"/>
+            </span>
+        );
+    }
+    if (IconComp) {
+        return (
+            <span
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-white shrink-0"
+                style={{backgroundColor: bg}}
+            >
+                <IconComp size={18}/>
+            </span>
+        );
+    }
+    if (letter) {
+        return (
+            <span
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-white font-bold shrink-0"
+                style={{backgroundColor: bg}}
+            >
+                {letter}
+            </span>
+        );
+    }
+    return null;
+};
+
+export default ({title, description, githubLink, exampleLink, note, logo}) => (
+    <Card className="mb-4">
+        <Card.Header>
+            <div className="flex items-center gap-3">
+                {logo && <ProjectLogo {...logo}/>}
+                <Card.Title>{title}</Card.Title>
             </div>
+        </Card.Header>
+        <Card.Content>
+            <p className="text-foreground">{description}</p>
+            {note && <p className="mt-1 text-sm text-muted">{note}</p>}
+        </Card.Content>
+        {(githubLink || exampleLink) &&
+        <Card.Footer className="flex gap-4">
+            {githubLink && <Link href={githubLink} target="_blank" rel="noopener noreferrer">github</Link>}
+            {exampleLink &&
+                <Link href={exampleLink} className="inline-flex items-center gap-1">
+                    View demo <ArrowUpRight size={14}/>
+                </Link>
             }
-        </div>
-    </div>
+        </Card.Footer>
+        }
+    </Card>
 );
