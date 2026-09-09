@@ -40,7 +40,7 @@ export default () => (
             <Link href="https://ca.linkedin.com/in/brad-jobe-36b338b7" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
                 <img src="/logos/linkedin.svg" alt="" className="w-4 h-4 rounded-sm shrink-0"/> LinkedIn
             </Link>
-            <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
+            <Link href="/BradJobe-Resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
                 <Download size={16}/> Resume
             </Link>
         </div>
