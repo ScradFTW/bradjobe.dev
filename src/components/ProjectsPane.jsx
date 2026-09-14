@@ -29,44 +29,60 @@ export default () => (
 
         <ProjectCard
             title="LLM Testing Demo"
-            description="A chat window for a small language model (Qwen2.5-0.5B) running entirely on this server's one CPU core. No GPU, no external API, just llama.cpp doing the work."
+            description="A chat window for a small language model (Qwen2.5-0.5B) running on llama.cpp across a small Kubernetes cluster. No GPU, no external API, just llama.cpp doing the work."
             exampleLink="/llm-testing/"
+            githubLink="https://github.com/ScradFTW/qwen-llm-gke"
             logo={{icon: MessageCircle, bg: '#df911a'}}
         />
         <ProjectCard
             title="Agent Orchestrator Demo"
             description="Ask it something and it decides on its own whether the question needs a tool, in this case the genre classifier. A separate guardrail double-checks that decision before anything actually runs."
             exampleLink="/agent-demo/"
+            githubLinks={[
+                {label: 'github (backend)', href: 'https://github.com/ScradFTW/llm-testing-deploy/tree/main/agent-orchestrator'},
+                {label: 'github (frontend)', href: 'https://github.com/ScradFTW/demos-ui/tree/main/packages/ai-tools'},
+            ]}
             logo={{icon: Workflow, bg: '#38853e'}}
         />
         <ProjectCard
             title="Genre Classifier"
             description="Type in a song title and it guesses the genre. Uses a classic TF-IDF + Logistic Regression model instead of a neural net, trained and served with no GPU involved."
             exampleLink="/genre-classifier/"
+            githubLinks={[
+                {label: 'github (backend)', href: 'https://github.com/ScradFTW/llm-testing-deploy/tree/main/genre-classifier'},
+                {label: 'github (frontend)', href: 'https://github.com/ScradFTW/demos-ui/tree/main/packages/ai-tools'},
+            ]}
             logo={{icon: Tag, bg: '#97549b'}}
         />
         <ProjectCard
             title="Image Classifier"
             description="Upload a photo and a small CNN, trained from scratch on CIFAR-10, guesses what's in it. Served with ONNX Runtime; no PyTorch or GPU needed to run it."
             exampleLink="/image-classifier/"
+            githubLinks={[
+                {label: 'github (backend)', href: 'https://github.com/ScradFTW/llm-testing-deploy/tree/main/image-classifier'},
+                {label: 'github (frontend)', href: 'https://github.com/ScradFTW/demos-ui/tree/main/packages/ai-tools'},
+            ]}
             logo={{icon: ImageIcon, bg: '#d35d31'}}
         />
         <ProjectCard
             title="Status Dashboard"
             description="Live request counts, latency, and error rates for every demo above, pulled straight from each service's own /stats endpoint. Same idea as Grafana, just small enough to hand-build."
             exampleLink="/status/"
+            githubLink="https://github.com/ScradFTW/demos-ui/tree/main/packages/ai-tools"
             logo={{icon: Activity, bg: '#258998'}}
         />
         <ProjectCard
             title="AI Coding Sandbox"
             description="Runs an AI coding agent in its own sandboxed container per session, with an egress proxy locking down which domains it can reach so it can't touch anything outside its box."
             exampleLink="/ccaas/"
+            githubLink="https://github.com/ScradFTW/ccaas"
             logo={{icon: Terminal, bg: '#d9525a'}}
         />
         <ProjectCard
             title="Motion Tracker"
-            description="Real-time skeletal tracking off your webcam using a ResNet18-shaped CNN I trained from scratch on COCO keypoints -- no pretrained backbone, no library. Runs fully client-side in multi-threaded WebAssembly."
+            description="Real-time skeletal tracking off your webcam using a ResNet18-shaped CNN I trained from scratch on COCO keypoints -- no pretrained backbone, no library. Runs fully client-side via WebAssembly."
             exampleLink="/pose-tracker/"
+            githubLink="https://github.com/ScradFTW/pose-tracker"
             logo={{icon: PersonStanding, bg: '#4fd1c5'}}
         />
 
