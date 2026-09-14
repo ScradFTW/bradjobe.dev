@@ -33,27 +33,36 @@ const ProjectLogo = ({icon: IconComp, bg, imgSrc, letter}) => {
     return null;
 };
 
-export default ({title, description, githubLink, exampleLink, note, logo}) => (
-    <Card className="mb-4">
-        <Card.Header>
-            <div className="flex items-center gap-3">
-                {logo && <ProjectLogo {...logo}/>}
-                <Card.Title>{title}</Card.Title>
-            </div>
-        </Card.Header>
-        <Card.Content>
-            <p className="text-foreground">{description}</p>
-            {note && <p className="mt-1 text-sm text-muted">{note}</p>}
-        </Card.Content>
-        {(githubLink || exampleLink) &&
-        <Card.Footer className="flex gap-4">
-            {githubLink && <Link href={githubLink} target="_blank" rel="noopener noreferrer">github</Link>}
-            {exampleLink &&
-                <Link href={exampleLink} className="inline-flex items-center gap-1">
-                    View demo <ArrowUpRight size={14}/>
-                </Link>
+// githubLink: single repo (most projects). githubLinks: array of
+// {label, href} for projects that split across more than one repo post-
+// migration (e.g. a shared frontend repo + a separate backend repo) --
+// one plain "github" link would only tell half the story for those.
+export default ({title, description, githubLink, githubLinks, exampleLink, note, logo}) => {
+    const repoLinks = githubLinks || (githubLink ? [{label: 'github', href: githubLink}] : []);
+    return (
+        <Card className="mb-4">
+            <Card.Header>
+                <div className="flex items-center gap-3">
+                    {logo && <ProjectLogo {...logo}/>}
+                    <Card.Title>{title}</Card.Title>
+                </div>
+            </Card.Header>
+            <Card.Content>
+                <p className="text-foreground">{description}</p>
+                {note && <p className="mt-1 text-sm text-muted">{note}</p>}
+            </Card.Content>
+            {(repoLinks.length > 0 || exampleLink) &&
+            <Card.Footer className="flex flex-wrap gap-4">
+                {repoLinks.map(({label, href}) => (
+                    <Link key={href} href={href} target="_blank" rel="noopener noreferrer">{label}</Link>
+                ))}
+                {exampleLink &&
+                    <Link href={exampleLink} className="inline-flex items-center gap-1">
+                        View demo <ArrowUpRight size={14}/>
+                    </Link>
+                }
+            </Card.Footer>
             }
-        </Card.Footer>
-        }
-    </Card>
-);
+        </Card>
+    );
+};
