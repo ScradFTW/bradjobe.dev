@@ -98,6 +98,7 @@ export default () => (
             title="allAtlanticCanada React-Native App"
             description="A mobile news reader for allNovaScotia's network of Atlantic Canada business sites, with search built to handle specific, multi-part queries rather than just keyword matching."
             exampleLink="https://allatlanticcanada.com"
+            exampleLabel="Download"
             logo={{imgSrc: '/logos/allnovascotia.svg'}}
         />
     </>

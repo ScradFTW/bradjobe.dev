@@ -37,7 +37,7 @@ const ProjectLogo = ({icon: IconComp, bg, imgSrc, letter}) => {
 // {label, href} for projects that split across more than one repo post-
 // migration (e.g. a shared frontend repo + a separate backend repo) --
 // one plain "github" link would only tell half the story for those.
-export default ({title, description, githubLink, githubLinks, exampleLink, note, logo}) => {
+export default ({title, description, githubLink, githubLinks, exampleLink, exampleLabel = 'View demo', note, logo}) => {
     const repoLinks = githubLinks || (githubLink ? [{label: 'github', href: githubLink}] : []);
     return (
         <Card className="mb-4">
@@ -58,7 +58,7 @@ export default ({title, description, githubLink, githubLinks, exampleLink, note,
                 ))}
                 {exampleLink &&
                     <Link href={exampleLink} className="inline-flex items-center gap-1">
-                        View demo <ArrowUpRight size={14}/>
+                        {exampleLabel} <ArrowUpRight size={14}/>
                     </Link>
                 }
             </Card.Footer>
