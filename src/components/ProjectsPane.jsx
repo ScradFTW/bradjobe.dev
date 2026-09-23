@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from '@heroui/react';
-import {MessageCircle, Workflow, Tag, Image as ImageIcon, Activity, Terminal, PersonStanding} from 'lucide-react';
+import {MessageCircle, Workflow, Tag, Image as ImageIcon, Activity, Terminal, PersonStanding, Map as MapIcon} from 'lucide-react';
 
 import ProjectCard from './ProjectCard';
 
@@ -88,6 +88,13 @@ export default () => (
 
         <SubHeading>Other Projects</SubHeading>
 
+        <ProjectCard
+            title="Election Map"
+            description="Build your own riding-by-riding prediction for the Canadian federal election, then save it and share the link. No accounts: every saved map is anonymous and public, and anyone can start a new map from someone else's."
+            exampleLink="https://electionmap.bradjobe.dev"
+            githubLink="https://github.com/ScradFTW/canelect"
+            logo={{icon: MapIcon, bg: '#d71920'}}
+        />
         <ProjectCard
             title="My personal website"
             description="The site you're reading right now. React and HeroUI, hand-built rather than templated, and where I host the experiments above."
